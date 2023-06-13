@@ -131,7 +131,7 @@ export default {
         }
       }).then(res => {
         console.log(res)
-        if(res.data.code ==200) {
+        if(res.data.code === 200) {
           this.$message({
             message: '更新成功',
             type: 'success'
@@ -151,7 +151,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .all {
-  padding: 0px 40px;
+  padding: 0 40px;
   .page {
     margin-top: 20px;
     display: flex;

@@ -14,6 +14,8 @@
  Date: 28/05/2023 14:10:14
 */
 
+create database exam;
+use exam;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
