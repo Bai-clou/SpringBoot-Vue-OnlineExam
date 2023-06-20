@@ -1,7 +1,7 @@
 <template>
   <div class="score">
     <div class="title">
-      <p class="name">计算机网络</p>
+      <p class="name">{{examData.source}}</p>
       <p class="description">(总分：100分,限时：100分钟)</p>
       <p class="description">学生：大咸鱼</p>
     </div>
@@ -44,15 +44,30 @@ export default {
         pass1: require('@/assets/img/good1.jpg'),
         pass2: require('@/assets/img/good2.gif')
       },
+      examData: { //考试信息
+        // source: null,
+        // totalScore: null,
+      },
       startTime: null, //考试开始时间
       endTime: null, //考试结束时间
     }
   },
   created() {
+    this.getExamData()
     this.transiton()
     this.getScore()
   },
   methods: {
+    getExamData() { //获取当前试卷所有信息
+      let examCode = this.$route.query.examCode //获取路由传递过来的试卷编号
+      console.log(examCode)
+      this.$axios(`/api/exam/${examCode}`).then(res => {  //通过examCode请求试卷详细信息
+        res.data.data.examDate = res.data.data.examDate.substr(0,10)
+        this.examData = { ...res.data.data} //获取考试详情
+        // console.log(this.examData)
+      })
+    },
+
     transiton() {  //一秒后过渡
       setTimeout(() => {
         this.isTransition = true
@@ -82,24 +97,24 @@ export default {
   }
   .img1Transform {
     opacity: 1 !important;
-    transform: translateX(30px) !important;  
+    transform: translateX(30px) !important;
     transition: all 0.6s ease !important;
   }
   .img2Transform {
     opacity: 1 !important;
-    transform: translateX(-30px) !important;  
+    transform: translateX(-30px) !important;
     transition: all 0.6s ease !important;
   }
   .img1 {
     margin-top: 70px;
     opacity: 0;
-    transform: translateX(0px);  
+    transform: translateX(0px);
     transition: all 0.6s ease;
   }
   .img2 {
     margin-top: 30px;
     opacity: 0;
-    transform: translateX(0px);  
+    transform: translateX(0px);
     transition: all 0.6s ease;
   }
 }
@@ -169,7 +184,7 @@ export default {
       margin-top: 80px;
       margin-bottom: 20px;
       transition: all 1s ease;
-      
+
       span:nth-child(1) {
         font-size: 36px;
         font-weight: 600;
