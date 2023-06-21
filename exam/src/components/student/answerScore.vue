@@ -3,7 +3,7 @@
     <div class="title">
       <p class="name">{{examData.source}}</p>
       <p class="description">(总分：100分,限时：100分钟)</p>
-      <p class="description">学生：大咸鱼</p>
+      <p class="description">学生：{{ userInfo.name }}</p>
     </div>
     <div class="total">
       <div class="look">
@@ -48,11 +48,16 @@ export default {
         // source: null,
         // totalScore: null,
       },
+      userInfo: { //用户信息
+        name: null,
+        id: null
+      },
       startTime: null, //考试开始时间
       endTime: null, //考试结束时间
     }
   },
   created() {
+    this.getCookies()
     this.getExamData()
     this.transiton()
     this.getScore()
@@ -64,10 +69,14 @@ export default {
       this.$axios(`/api/exam/${examCode}`).then(res => {  //通过examCode请求试卷详细信息
         res.data.data.examDate = res.data.data.examDate.substr(0,10)
         this.examData = { ...res.data.data} //获取考试详情
-        // console.log(this.examData)
+        console.log(this.examData)
+
       })
     },
-
+    getCookies() {  //获取cookie
+      this.userInfo.name = this.$cookies.get("cname")
+      this.userInfo.id = this.$cookies.get("cid")
+    },
     transiton() {  //一秒后过渡
       setTimeout(() => {
         this.isTransition = true

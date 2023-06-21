@@ -30,7 +30,7 @@
           callback();
         }
       };
-      var validatePass2 = (rule, value, callback) => {
+      const validatePass2 = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'));
         } else if (value !== this.ruleForm2.pass) {
@@ -95,10 +95,9 @@
 }
 #manager {
   width: 600px;
-  margin: 0 auto;
-  margin-top: 100px;
   text-align: center;
-  margin-bottom: 300px;
+  margin: 100px auto 300px;
+
 }
 #manager .alter {
   margin: 30px 0px;
