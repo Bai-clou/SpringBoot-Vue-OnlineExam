@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 填空题控制类
+ */
 @RestController
 public class FillQuestionController {
 
     @Autowired
     private FillQuestionServiceImpl fillQuestionService;
 
+    /**
+     * 添加
+     * @param fillQuestion
+     * @return ApiResult
+     */
     @PostMapping("/fillQuestion")
     public ApiResult add(@RequestBody FillQuestion fillQuestion) {
         int res = fillQuestionService.add(fillQuestion);
@@ -25,6 +33,10 @@ public class FillQuestionController {
         return ApiResultHandler.buildApiResult(400,"添加失败",res);
     }
 
+    /**
+     * 查询
+     * @return ApiResult
+     */
     @GetMapping("/fillQuestionId")
     public ApiResult findOnlyQuestionId() {
         FillQuestion res = fillQuestionService.findOnlyQuestionId();

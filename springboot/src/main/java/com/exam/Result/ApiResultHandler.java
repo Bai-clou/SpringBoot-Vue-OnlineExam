@@ -1,10 +1,15 @@
 package com.exam.Result;
 
 /**
- * Api结果处理程序
+ * Api结果集处理
  */
 public class ApiResultHandler {
 
+    /**
+     * 静态方法
+     * @param object
+     * @return ApiResult
+     */
     public static ApiResult success(Object object) {
         ApiResult apiResult = new ApiResult();
         apiResult.setData(object);

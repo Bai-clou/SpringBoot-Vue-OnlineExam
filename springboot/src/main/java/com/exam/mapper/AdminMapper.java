@@ -17,8 +17,7 @@ public interface AdminMapper {
     @Delete("delete from admin where adminId = #{adminId}")
     public int deleteById(int adminId);
 
-    @Update("update admin set adminName = #{adminName},sex = #{sex}," +
-            "tel = #{tel}, email = #{email},pwd = #{pwd},cardId = #{cardId},role = #{role} where adminId = #{adminId}")
+    @Update("update admin set adminName = #{adminName},sex = #{sex},tel = #{tel}, email = #{email},pwd = #{pwd},cardId = #{cardId},role = #{role} where adminId = #{adminId}")
     public int update(Admin admin);
 
     @Options(useGeneratedKeys = true,keyProperty = "adminId")

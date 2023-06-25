@@ -2,11 +2,11 @@ package com.exam.controller;
 
 import com.exam.Result.ApiResult;
 import com.exam.entity.PaperManage;
-import com.exam.service.PaperService;
 import com.exam.service.serviceimpl.FillQuestionServiceImpl;
 import com.exam.service.serviceimpl.JudgeQuestionServiceImpl;
 import com.exam.service.serviceimpl.MultiQuestionServiceImpl;
 import com.exam.Result.ApiResultHandler;
+import com.exam.service.serviceimpl.PaperServiceImpl;
 import com.exam.vo.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 组卷
+ * 控制类
+ */
 @RestController
 public class ItemController {
 
@@ -28,7 +32,7 @@ public class ItemController {
     JudgeQuestionServiceImpl judgeQuestionService;
 
     @Autowired
-    PaperService paperService;
+    PaperServiceImpl paperService;
 
 
     @PostMapping("/item")
@@ -66,7 +70,7 @@ public class ItemController {
         }
         // 判断题
         List<Integer> judges = judgeQuestionService.findBySubject(item.getSubject(), judgeNumber);
-        if (fills == null)
+        if (judges == null)
             return ApiResultHandler.buildApiResult(400, "判断题数据库获取失败", null);
         for (Integer judge : judges) {
             PaperManage paperManage = new PaperManage(paperId, 3, judge);

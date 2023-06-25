@@ -9,6 +9,9 @@ import com.exam.Result.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 留言控制器
+ */
 @RestController
 public class MessageController {
 

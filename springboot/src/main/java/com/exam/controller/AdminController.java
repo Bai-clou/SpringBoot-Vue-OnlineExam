@@ -41,13 +41,13 @@ public class AdminController {
     }
 
     @PutMapping("/admin/{adminId}")
-    public ApiResult update(@PathVariable("adminId") Integer adminId, Admin admin){
+    public ApiResult update(@PathVariable("adminId") Integer adminId, @RequestBody Admin admin){
         System.out.println("更新操作");
         return ApiResultHandler.success(adminService.update(admin));
     }
 
     @PostMapping("/admin")
-    public ApiResult add(Admin admin){
+    public ApiResult add(@RequestBody Admin admin){
         System.out.println("添加操作");
         return ApiResultHandler.success(adminService.add(admin));
     }

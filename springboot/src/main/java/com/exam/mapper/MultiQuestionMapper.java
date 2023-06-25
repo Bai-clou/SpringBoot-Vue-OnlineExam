@@ -31,11 +31,22 @@ public interface MultiQuestionMapper {
     @Select("select questionId from multi_question order by questionId desc limit 1")
     MultiQuestion findOnlyQuestionId();
 
+    /**
+     *  mybatis主键自增长，注解返回主键：@Options()
+     * @param multiQuestion
+     * @return int
+     */
     @Options(useGeneratedKeys = true,keyProperty = "questionId")
     @Insert("insert into multi_question(subject,question,answerA,answerB,answerC,answerD,rightAnswer,analysis,section,level) " +
             "values(#{subject},#{question},#{answerA},#{answerB},#{answerC},#{answerD},#{rightAnswer},#{analysis},#{section},#{level})")
     int add(MultiQuestion multiQuestion);
 
+    /**
+     * 注：rand()随机数
+     * @param subject
+     * @param pageNo
+     * @return List
+     */
     @Select("select questionId from multi_question  where subject =#{subject} order by rand() desc limit #{pageNo}")
     List<Integer> findBySubject(String subject,Integer pageNo);
 

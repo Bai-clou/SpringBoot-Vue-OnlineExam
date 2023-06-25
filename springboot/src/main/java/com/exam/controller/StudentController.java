@@ -9,6 +9,9 @@ import com.exam.Result.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 学生控制器
+ */
 @RestController
 public class StudentController {
 

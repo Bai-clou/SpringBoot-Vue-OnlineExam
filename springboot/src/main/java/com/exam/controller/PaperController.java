@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 试卷控制器
+ */
 @RestController
 public class PaperController {
 
@@ -34,11 +37,17 @@ public class PaperController {
        return  res;
     }
 
+    /**
+     * 查询试卷
+     * @param paperId
+     * @return Map
+     */
     @GetMapping("/paper/{paperId}")
     public Map<Integer, List<?>> findById(@PathVariable("paperId") Integer paperId) {
         List<MultiQuestion> multiQuestionRes = multiQuestionService.findByIdAndType(paperId);   //选择题题库 1
         List<FillQuestion> fillQuestionsRes = fillQuestionService.findByIdAndType(paperId);     //填空题题库 2
         List<JudgeQuestion> judgeQuestionRes = judgeQuestionService.findByIdAndType(paperId);   //判断题题库 3
+        //Map封装
         Map<Integer, List<?>> map = new HashMap<>();
         map.put(1,multiQuestionRes);
         map.put(2,fillQuestionsRes);

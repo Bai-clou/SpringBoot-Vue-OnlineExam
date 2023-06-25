@@ -148,7 +148,7 @@ a:link {
   width: 100%;
   overflow-y: auto;
   height: 100%;
-  background: url('../../assets/img/bj2.jpg')center top / cover no-repeat;
+  background: url('../../assets/img/loginbg.png')center top / cover no-repeat;
   background-color: #b6bccdd1 !important;
 }
 #login .main-container {

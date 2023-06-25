@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 分数控制器
+ */
 @RestController
 public class ScoreController {
     @Autowired
     private ScoreServiceImpl scoreService;
+
 
     @GetMapping("/scores")
     public ApiResult findAll() {

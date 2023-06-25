@@ -15,11 +15,22 @@ public class MultiQuestionServiceImpl implements MultiQuestionService {
 
     @Autowired
     private MultiQuestionMapper multiQuestionMapper;
+
+    /**
+     * ID 查询
+     * @param PaperId
+     * @return
+     */
     @Override
     public List<MultiQuestion> findByIdAndType(Integer PaperId) {
         return multiQuestionMapper.findByIdAndType(PaperId);
     }
 
+    /**
+     * 分页查询所有
+     * @param page
+     * @return IPage<MultiQuestion>
+     */
     @Override
     public IPage<MultiQuestion> findAll(Page<MultiQuestion> page) {
         return multiQuestionMapper.findAll(page);

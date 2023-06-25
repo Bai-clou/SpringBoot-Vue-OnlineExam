@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 选择题控制器
+ */
 @RestController
 public class MultiQuestionController {
 
@@ -18,6 +21,7 @@ public class MultiQuestionController {
 
     @GetMapping("/multiQuestionId")
     public ApiResult findOnlyQuestion() {
+        System.out.println("----选择题查询----");
         MultiQuestion res = multiQuestionService.findOnlyQuestionId();
         return ApiResultHandler.buildApiResult(200,"查询成功",res);
     }

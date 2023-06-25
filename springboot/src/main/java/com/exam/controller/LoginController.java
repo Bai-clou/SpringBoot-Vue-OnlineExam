@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * 登录控制器
+ * 只获取用户数据
+ * 校验用户身份交由前端处理
+ */
 @RestController
 public class LoginController {
 

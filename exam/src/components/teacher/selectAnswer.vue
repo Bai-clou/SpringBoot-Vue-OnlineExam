@@ -1,4 +1,4 @@
-//查询所有题库
+<!--查询所有题库-->
 <template>
   <div class="exam">
     <div class="wrapper">
@@ -37,26 +37,29 @@ export default {
         //分页后的考试信息
         current: 1, //当前页
         total: null, //记录条数
-        size: 6 //每页条数
-      }
+        size: 6, //每页条数
+      },
+      key: null //搜索关键字
     };
   },
   created() {
     this.getAnswerInfo();
   },
   methods: {
-    //  //搜索试卷
-    //  search() {
-    //   this.$axios('/api/exams').then(res => {
-    //     if(res.data.code == 200) {
-    //       let allExam = res.data.data
-    //       let newPage = allExam.filter(item => {
-    //         return item.source.includes(this.key)
-    //       })
-    //       this.pagination.records = newPage
-    //     }
-    //   })
-    // },
+
+    //搜索试卷
+    search() {
+      this.$axios('/api/exams').then(res => {
+        if(res.data.code === 200) {
+          let allExam = res.data.data
+          let newPage = allExam.filter(item => {
+            return item.source.includes(this.key)
+          })
+          this.pagination.records = newPage
+        }
+      })
+    },
+
     getAnswerInfo() {
       //分页查询所有试卷信息
       this.$axios(
@@ -79,7 +82,7 @@ export default {
       this.getAnswerInfo();
     },
     tableRowClassName({ row, rowIndex }) {
-      if (rowIndex % 2 == 0) {
+      if (rowIndex % 2 === 0) {
         return "warning-row";
       } else {
         return "success-row";
@@ -106,7 +109,7 @@ export default {
 }
   .el-table .warning-row {
     background: #000 !important;
-    
+
   }
 
   .el-table .success-row {
